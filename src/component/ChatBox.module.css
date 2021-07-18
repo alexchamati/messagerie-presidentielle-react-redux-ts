@@ -1,0 +1,15 @@
+.host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@supports not (content-visibility: hidden) {
+  .chatBoxHidden {
+    display: none;
+  }
+}
+
+.chatBoxHidden {
+  content-visibility: hidden; /* firefox doesn't support this property */
+}

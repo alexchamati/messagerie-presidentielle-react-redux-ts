@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ChatBox from "./component/ChatBox";
+import ChatForm from "./component/ChatForm/ChatForm";
+import ChatFilter from "./component/ChatFilter";
+import styles from "./App.module.css";
+import { useAppSelector } from "./hooks";
+import { messageStatusSelector } from "./store/messageSelectors";
+import { getMessagesActionThunk } from "./store/messageActions";
+import store from "./store";
 
 function App() {
+  const status = useAppSelector(messageStatusSelector);
+
+  const refresh = () => store.dispatch(getMessagesActionThunk);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.host}>
+      <ChatForm />
+      <ChatFilter />
+      {status === "loading" && "Chargement..."}
+      {status === "error" && (
+        <div className="fr-callout fr-fi-information-line">
+          <h4 className="fr-callout__title">Oups !</h4>
+          <p className="fr-callout__text">
+            Une erreur s'est produite, merci de réessayer ultérieurement
+          </p>
+          <button className="fr-btn" onClick={refresh}>
+            Réessayer
+          </button>
+        </div>
+      )}
+      <ChatBox />
     </div>
   );
 }

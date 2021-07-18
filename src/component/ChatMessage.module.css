@@ -1,0 +1,40 @@
+.host {
+  padding: 10px;
+}
+
+.containerMessage,
+.subContainerMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 10px 10px 10px 10px;
+  color: #1e1e1e;
+  border-radius: 5px;
+  white-space: pre-line;
+}
+
+.message p {
+  margin: 0;
+}
+
+.messagePublic {
+  background: #e5e5f4;
+}
+
+.messagePrivate {
+  background: #ff8d7e;
+}
+
+.opacityLight {
+  opacity: 0.5;
+}
+
+.replyButton {
+  margin-top: 5px;
+}

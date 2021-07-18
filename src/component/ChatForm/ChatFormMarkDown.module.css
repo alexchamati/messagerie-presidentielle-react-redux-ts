@@ -1,0 +1,20 @@
+.host {
+  margin-top: 5px;
+}
+
+.hrCutomRules {
+  border-left: 1px solid black;
+}
+
+.markdown {
+  display: flex;
+  gap: 20px;
+}
+
+.markdown *:not(.hrCutomRules) {
+  cursor: pointer;
+}
+
+.markdown button {
+  background: none;
+}
